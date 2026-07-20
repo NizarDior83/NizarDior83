@@ -1,4 +1,4 @@
-# 🧘 BRAND KIT — "Limber"
+# 🧘 BRAND KIT — "Filea"
 
 > Daily stretch, yoga & mobility routines · Age rating 3+ / Everyone
 > Reference / benchmark app: **Bend** (Bend is the inspiration, not the product).
@@ -9,18 +9,16 @@
 
 | Element | Definition |
 |---|---|
-| **Name** | Limber |
+| **Name** | Filea |
 | **Category** | Health & Fitness → Stretching, Mobility & Yoga |
 | **Age rating** | 3+ / Everyone (safe, non-violent, no risky content) |
 | **One-liner** | *Move better every day — guided stretch & mobility in minutes.* |
 | **Mission** | Help anyone restore and keep their body's natural range of motion, with short daily routines that adapt to how they feel. |
 | **Positioning** | The *adaptive* mobility companion — calmer than gym apps, smarter than a static stretch library. |
-| **Twist vs. reference (Bend)** | Bend gives you a library; **Limber asks how you feel and picks the right routine for today** (adaptive daily check-in). |
+| **Twist vs. reference (Bend)** | Bend gives you a library; **Filea asks how you feel and picks the right routine for today** (adaptive daily check-in). |
 
-### Alternate name candidates
-1. **Limber** ✅ (selected — means supple/flexible, warm, ownable)
-2. **Unfold** (gentle, poetic — "unfold your body")
-3. **Sway** (soft, calm, one-syllable feel)
+### Name
+**Filea** ✅ — chosen by the founder. Soft, feminine-flowing sound; evokes *fil* (thread/line — the body as one continuous line that stretches and flows) and *ease*. Short, ownable, works internationally.
 
 ### Brand Personality
 - **Calm** — never shouty, no "crush your goals" hustle culture
@@ -38,10 +36,10 @@
 
 ## 2. Logo & Symbol
 
-- **Wordmark:** "limber" in lowercase, rounded geometric sans — soft curves echo flexibility.
+- **Wordmark:** "filea" in lowercase, rounded geometric sans — soft curves echo flexibility.
 - **Symbol:** A single continuous line that arcs/bends into an open loop (a body easing into a forward fold). Works standalone as the app-icon mark.
 - **App icon:** Rounded-corner tile, sage → teal gradient background, single off-white curved-line mark centered.
-- **Clear space:** Minimum padding = height of the "l" on all sides.
+- **Clear space:** Minimum padding = height of the "f" on all sides.
 
 ---
 

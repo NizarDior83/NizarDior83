@@ -1,4 +1,4 @@
-# 🏗️ BUILD PLAN — "Limber"
+# 🏗️ BUILD PLAN — "Filea"
 
 > Daily stretch, yoga & mobility app · 3+ / Everyone · Reference app: Bend
 > Companion document: [BRAND_KIT.md](./BRAND_KIT.md)
@@ -20,7 +20,7 @@
 
 - [ ] Lock brand kit into a design-system file (tokens: colors, type, spacing, radii)
 - [ ] Confirm tech stack
-- [ ] Define monetization: free routines + **Limber Premium** subscription
+- [ ] Define monetization: free routines + **Filea Premium** subscription
 - [ ] Set up repo, project structure, CI
 
 ## Phase 1 — Content Model & Data (Week 2)
@@ -59,7 +59,7 @@ Deliverable: initial pose library of **~40–60 poses** covering all categories.
 ## Phase 5 — Monetization (Week 9)
 
 - **Free tier:** a few routines per category + limited library
-- **Limber Premium** (monthly / annual + free trial): full library, Create Your Own, adaptive recommendations, offline downloads
+- **Filea Premium** (monthly / annual + free trial): full library, Create Your Own, adaptive recommendations, offline downloads
 - Calm, value-focused paywall screen · RevenueCat integration · restore purchases
 
 ## Phase 6 — Polish & QA (Week 10)
