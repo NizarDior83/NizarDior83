@@ -43,6 +43,18 @@
 
 ---
 
+## 2b. Signature Element — "The Thread" 🧵
+
+The one thing Filea will be remembered by, derived directly from the name (*fil* = thread):
+
+**A single continuous 2px line runs through the whole product.** It draws the logo mark, underlines the daily greeting, becomes the progress line in the Routine Player, and renders every pose illustration as a one-line figure. The body is one continuous line that stretches — the UI says so visually, everywhere.
+
+Rules: the thread is always 2px, always rounded caps, always one uninterrupted stroke per element. Everything else on screen stays quiet so the thread can carry the identity.
+
+> Design rationale: the earlier cream + serif + terracotta direction matched a common AI-generated template. This direction (Morning Mist cool-green base, dawn-gold ↔ dusk-lilac time-of-day accents, Bricolage Grotesque/Karla, thread signature) is chosen *from Filea's own world* — the day's arc from Wake Up to Sleep, and the body as a thread.
+
+---
+
 ## 3. Color Palette
 
 ### Primary (calm, nature, recovery)
@@ -51,18 +63,18 @@
 |---|---|---|
 | Primary | Sage Green | `#5B8A72` |
 | Primary Deep | Forest | `#2F4F43` |
-| Accent | Warm Terracotta | `#E08A5B` |
+| Accent | Dusk Lilac | `#9187B5` |
 | Highlight | Soft Gold | `#E8C468` |
 
 ### Neutrals (breathable UI)
 
 | Role | Name | Hex |
 |---|---|---|
-| Background | Warm Cream | `#F7F4EF` |
+| Background | Morning Mist | `#EFF3EF` |
 | Surface | Off-White | `#FFFFFF` |
-| Text Primary | Charcoal | `#2A2A28` |
+| Text Primary | Ink Moss | `#22302B` |
 | Text Secondary | Stone Grey | `#7C7A75` |
-| Divider | Light Sand | `#E6E1D8` |
+| Divider | Pale Mist | `#DCE4DD` |
 
 ### Dark mode (Sleep routines / night use)
 
@@ -78,10 +90,10 @@
 | Category | Accent |
 |---|---|
 | Wake Up | Soft Gold `#E8C468` |
-| Posture Reset | Terracotta `#E08A5B` |
+| Posture Reset | Dusk Lilac `#9187B5` |
 | Full Body | Sage `#5B8A72` |
 | Sleep | Deep Indigo `#3A4A6B` |
-| Expert | Charcoal `#2A2A28` |
+| Expert | Ink Moss `#22302B` |
 | Hips / Hamstrings / Lower Back | Teal tints |
 | Isometric | Slate |
 
@@ -91,9 +103,9 @@
 
 | Use | Font | Notes |
 |---|---|---|
-| Display / Headings | **Fraunces** or **Recoleta** | Soft serif, warm & premium |
-| Body / UI | **Inter** or **DM Sans** | Clean, highly legible |
-| Timers / Numbers | **DM Sans (tabular figures)** | Countdown clarity |
+| Display / Headings | **Bricolage Grotesque** | Characterful grotesque — warm but modern, distinctive without shouting |
+| Body / UI | **Karla** | Humanist sans, clean & quietly warm |
+| Timers / Numbers | **Spline Sans Mono** | Countdown clarity |
 
 **Type scale (mobile):** H1 32 / H2 24 / H3 20 / Body 16 / Caption 13
 **Line-height:** 1.5 (generous, calm feel)
@@ -103,7 +115,7 @@
 ## 5. Iconography & Imagery
 
 - **Icons:** Rounded, 2px stroke, single-weight line icons. The ⊕ motif is the visual bullet/tag for routines.
-- **Illustration:** Simple flat human figures mid-stretch, warm neutral tones, no faces (inclusive & universal).
+- **Illustration:** **One-line figures** — every pose drawn as a single continuous 2px stroke (the "thread"), inclusive & universal, no faces. This is Filea's own illustration language, not generic flat vectors.
 - **Photography (optional):** Soft natural light, home/floor settings, muted tones — *never* gym mirrors or heavy sweat.
 - **Motion:** Gentle looping pose animations; ease-in-out only, no snappy transitions. Everything breathes.
 

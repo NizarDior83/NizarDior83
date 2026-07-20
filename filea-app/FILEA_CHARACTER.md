@@ -21,9 +21,9 @@
 ## 2. Visual Specification
 
 - **Body:** Rounded, slightly chubby cat built from soft continuous curves — visually echoes the one-line Filea logo mark
-- **Color:** Sage green body `#5B8A72`, cream belly/muzzle `#F7F4EF`, deep forest `#2F4F43` for line accents (ears, tail tip)
+- **Color:** Sage green body `#5B8A72`, mist belly/muzzle `#EFF3EF`, deep forest `#2F4F43` for line accents (ears, tail tip)
 - **Eyes:** Simple, calm — closed-happy arcs most of the time (matches the zen tone)
-- **Details:** Warm terracotta `#E08A5B` tiny nose; soft gold `#E8C468` collar-bell or star for celebration states
+- **Details:** Warm dusk lilac `#9187B5` tiny nose; soft gold `#E8C468` collar-bell or star for celebration states
 - **Style:** Flat vector illustration, 2px rounded outlines or lineless flat, soft shadows only — must sit beside the app UI without clashing
 - **Never:** realistic fur, hard edges, angry/scared expressions, photorealism
 
@@ -49,7 +49,7 @@ Use in Midjourney / DALL-E / Gemini image gen to create the reference sheet:
 ```
 Character design sheet for "Fil", a calm mascot cat for a stretching & yoga mobile app.
 STYLE: flat vector illustration, minimal, soft rounded shapes, lineless flat design with subtle soft shadows, children-friendly (3+), modern app mascot style, clean white background, professional character sheet layout.
-CHARACTER: a slightly chubby, serene cat built from soft continuous curves. Sage green body (#5B8A72), warm cream belly and muzzle (#F7F4EF), deep forest green (#2F4F43) inner ears and tail tip, tiny warm terracotta nose (#E08A5B). Eyes are simple closed-happy arcs, gentle smile. Zen, cozy, friendly energy — like a cat mid-morning-stretch.
+CHARACTER: a slightly chubby, serene cat built from soft continuous curves. Sage green body (#5B8A72), morning mist belly and muzzle (#EFF3EF), deep forest green (#2F4F43) inner ears and tail tip, tiny warm dusk lilac nose (#9187B5). Eyes are simple closed-happy arcs, gentle smile. Zen, cozy, friendly energy — like a cat mid-morning-stretch.
 SHEET LAYOUT: full turnaround — front view, side view, back view, 3/4 view — plus 4 expression studies (serene, happy, sleepy, celebrating with tiny gold sparkles #E8C468).
 MOOD: calm, warm, breathable — wellness app aesthetic, NOT energetic cartoon.
 AVOID: realistic fur, hard outlines, aggressive expression, gradients, 3D render, photorealism.
@@ -58,12 +58,12 @@ AVOID: realistic fur, hard outlines, aggressive expression, gradients, 3D render
 
 ## 5. POSE PROMPTS (generate after the sheet, reference the same character)
 
-Append to each: *"Same character as the reference sheet: Fil, flat vector sage-green cat (#5B8A72) with cream belly, closed-happy eyes. Flat vector, lineless, soft shadow, transparent/white background, wellness app style, 3+ friendly."*
+Append to each: *"Same character as the reference sheet: Fil, flat vector sage-green cat (#5B8A72) with mist belly, closed-happy eyes. Flat vector, lineless, soft shadow, transparent/white background, wellness app style, 3+ friendly."*
 
 1. **Hero stretch:** "Fil doing a classic cat stretch — front paws extended forward, back arched, tail curled up happily, eyes closed in bliss"
 2. **Sleep:** "Fil curled into a crescent, fully asleep, tiny 'zzz' in soft gold, deep indigo (#3A4A6B) night-sky accent behind"
 3. **Celebration:** "Fil sitting upright with both paws raised, eyes closed happy, small soft-gold sparkles (#E8C468) around him"
-4. **Welcome:** "Fil sitting calmly, one paw raised in a gentle wave, warm cream background circle (#F7F4EF)"
+4. **Welcome:** "Fil sitting calmly, one paw raised in a gentle wave, morning mist background circle (#EFF3EF)"
 5. **Peeking:** "Fil peeking from the right edge of the frame, only head and one paw visible, curious calm expression"
 6. **Balance:** "Fil standing on hind legs in a yoga tree pose, front paws together above head, perfectly serene"
 
@@ -73,7 +73,7 @@ Add this line to the `<design_system>` block of both existing Claude Design prom
 
 ```
 <mascot>
-  App mascot "Fil": a flat-vector calm cat, sage green #5B8A72 body, cream #F7F4EF belly, closed-happy arc eyes, terracotta #E08A5B nose. Appears ONLY in: onboarding greeting, empty states, streak celebration on Completion screen, and Sleep screens (curled asleep). Human pose demonstrations remain faceless flat human figures — the cat never demonstrates the stretches.
+  App mascot "Fil": a flat-vector calm cat, sage green #5B8A72 body, cream #EFF3EF belly, closed-happy arc eyes, dusk lilac #9187B5 nose. Appears ONLY in: onboarding greeting, empty states, streak celebration on Completion screen, and Sleep screens (curled asleep). Human pose demonstrations remain one-line human figures — the cat never demonstrates the stretches.
 </mascot>
 ```
 

@@ -14,21 +14,21 @@ Create a 4-screen UI mockup in Claude Design for "Filea", a calm daily stretch, 
   <colors>
     <color role="brand.primary" hex="#5B8A72" intent="primary buttons, active states" />
     <color role="brand.primaryDeep" hex="#2F4F43" intent="headers, pressed states" />
-    <color role="brand.accent" hex="#E08A5B" intent="highlights, Posture category" />
+    <color role="brand.accent" hex="#9187B5" intent="highlights, Posture category" />
     <color role="brand.highlight" hex="#E8C468" intent="Wake Up category, premium badge" />
-    <color role="bg.default" hex="#F7F4EF" intent="app background" />
+    <color role="bg.default" hex="#EFF3EF" intent="app background" />
     <color role="bg.surface" hex="#FFFFFF" intent="cards, sheets" />
-    <color role="text.primary" hex="#2A2A28" intent="headings, body" />
+    <color role="text.primary" hex="#22302B" intent="headings, body" />
     <color role="text.secondary" hex="#7C7A75" intent="captions" />
-    <color role="ui.divider" hex="#E6E1D8" intent="dividers, borders" />
+    <color role="ui.divider" hex="#DCE4DD" intent="dividers, borders" />
     <color role="dark.bg" hex="#151915" intent="Sleep screen dark background" />
     <color role="dark.surface" hex="#1F2620" intent="Sleep screen cards" />
     <color role="dark.primary" hex="#7FB299" intent="Sleep screen accents" />
     <color role="dark.text" hex="#EDEAE3" intent="Sleep screen text" />
   </colors>
   <typography>
-    <font role="heading" family="Fraunces" weight="600" />
-    <font role="body" family="Inter" weight="400" />
+    <font role="heading" family="Bricolage Grotesque" weight="600" />
+    <font role="body" family="Karla" weight="400" />
   </typography>
   <layout>
     <format>375px mobile</format>

@@ -22,19 +22,19 @@ Everyday people (not gym athletes) — office workers with stiff hips and backs,
   <colors>
     <color role="brand.primary" hex="#5B8A72" intent="primary buttons, active states, brand moments" />
     <color role="brand.primaryDeep" hex="#2F4F43" intent="headers on light bg, pressed states" />
-    <color role="brand.accent" hex="#E08A5B" intent="highlights, streak flame, Posture category" />
+    <color role="brand.accent" hex="#9187B5" intent="highlights, streak flame, Posture category" />
     <color role="brand.highlight" hex="#E8C468" intent="Wake Up category, celebration moments" />
-    <color role="bg.default" hex="#F7F4EF" intent="app background (warm cream)" />
+    <color role="bg.default" hex="#EFF3EF" intent="app background (morning mist)" />
     <color role="bg.surface" hex="#FFFFFF" intent="cards, sheets" />
-    <color role="text.primary" hex="#2A2A28" intent="headings, body" />
+    <color role="text.primary" hex="#22302B" intent="headings, body" />
     <color role="text.secondary" hex="#7C7A75" intent="captions, metadata" />
-    <color role="ui.divider" hex="#E6E1D8" intent="dividers, card borders" />
+    <color role="ui.divider" hex="#DCE4DD" intent="dividers, card borders" />
     <color role="category.sleep" hex="#3A4A6B" intent="Sleep category accent" />
   </colors>
   <typography>
-    <font role="heading" family="Fraunces" weight="600" />
-    <font role="body" family="Inter" weight="400" />
-    <font role="timer" family="Inter (tabular figures)" weight="500" />
+    <font role="heading" family="Bricolage Grotesque" weight="600" />
+    <font role="body" family="Karla" weight="400" />
+    <font role="timer" family="Spline Sans Mono" weight="500" />
   </typography>
   <layout>
     <format>375px mobile, iOS-style safe areas</format>
@@ -50,30 +50,30 @@ Everyday people (not gym athletes) — office workers with stiff hips and backs,
     <element type="chip-group" label="Sleep" options="Poor, Fine, Great" />
     <element type="button" label="Find my routine" style="primary, full-width" />
   </elements>
-  <visual_instruction>Warm cream background. Fraunces heading top-left. Selectable pill chips — selected state filled sage green, unselected white with sand border. Calm, airy spacing.</visual_instruction>
+  <visual_instruction>Warm mist background. Bricolage Grotesque heading top-left. Selectable pill chips — selected state filled sage green, unselected white with mist border. Calm, airy spacing.</visual_instruction>
 </screen>
 
 <screen name="Home" device="mobile-375">
   <elements>
     <element type="text">Good morning, Nizar 🌿</element>
-    <element type="card" label="Today for you: Posture Reset — 8 min · 9 stretches" style="hero card with terracotta accent and Start button" />
+    <element type="card" label="Today for you: Posture Reset — 8 min · 9 stretches" style="hero card with dusk lilac accent and Start button" />
     <element type="grid" label="Categories" items="⊕ Wake Up, ⊕ Posture Reset, ⊕ Full Body, ⊕ Sleep, ⊕ Hips, ⊕ Lower Back" />
     <element type="streak-bar" label="4-day streak" />
     <element type="tab-bar" items="Home, Library, My Routines, Profile" />
   </elements>
-  <visual_instruction>Hero recommendation card on white surface with soft shadow and a small flat faceless illustration of a seated stretch. Category grid: 2 columns, each tile tinted with its category accent color at 12% opacity, ⊕ symbol as tag. Gentle streak indicator with soft gold dots, not aggressive gamification.</visual_instruction>
+  <visual_instruction>Hero recommendation card on white surface with soft shadow and a small one-line illustration of a seated stretch. Category grid: 2 columns, each tile tinted with its category accent color at 12% opacity, ⊕ symbol as tag. Gentle streak indicator with soft gold dots, not aggressive gamification.</visual_instruction>
 </screen>
 
 <screen name="Routine Player" device="mobile-375">
   <elements>
-    <element type="illustration" placeholder="Large flat faceless human figure in seated neck stretch, centered" />
+    <element type="illustration" placeholder="Large one-line human figure (single continuous stroke) in seated neck stretch, centered" />
     <element type="heading">Neck Release</element>
     <element type="timer" label="0:24" style="large tabular countdown" />
     <element type="progress-bar" label="Stretch 3 of 9" />
     <element type="text">Next: Shoulder Rolls</element>
     <element type="button-row" items="Previous, Pause (large center), Skip" />
   </elements>
-  <visual_instruction>Full-screen calm layout, cream background, illustration takes upper 50%. Timer in Fraunces-scale prominence but Inter tabular digits. Thin sage progress bar under the timer. Rounded soft controls. This is the hero screen — make it feel like a breath.</visual_instruction>
+  <visual_instruction>Full-screen calm layout, mist background, illustration takes upper 50%. Timer in Bricolage Grotesque-scale prominence but Spline Sans Mono digits. Thin sage progress bar under the timer. Rounded soft controls. This is the hero screen — make it feel like a breath.</visual_instruction>
 </screen>
 
 <screen name="Completion" device="mobile-375">
@@ -84,7 +84,7 @@ Everyday people (not gym athletes) — office workers with stiff hips and backs,
     <element type="chip-group" label="How do you feel now?" options="Looser, Same, Amazing" />
     <element type="button" label="Done" style="primary, full-width" />
   </elements>
-  <visual_instruction>Celebration is gentle, not confetti-explosive: soft gold arcs, warm tones. Stats as three minimal tiles with sand dividers.</visual_instruction>
+  <visual_instruction>Celebration is gentle, not confetti-explosive: soft gold arcs, warm tones. Stats as three minimal tiles with mist dividers.</visual_instruction>
 </screen>
 
 Visual voice: Calm, warm, minimal — like a physiotherapist who is also a good friend. Write copy in warm second person with gentle verbs (ease, release, unwind). Avoid hustle-fitness energy, aggressive gamification, and corporate buzzwords.
@@ -93,7 +93,7 @@ Visual voice: Calm, warm, minimal — like a physiotherapist who is also a good 
 1. Apply design system tokens exactly. Do not introduce unapproved colors, fonts, or visual elements.
 2. All screens 375px mobile width with consistent status bar and safe areas.
 3. Minimum body text 16px; large touch targets (min 48px) — this is a 3+ accessible app.
-4. Do not generate abstract AI illustrations or photos. Use simple flat faceless human figures mid-stretch and 2px rounded line icons only.
+4. Do not generate abstract AI illustrations or photos. Use simple one-line human figures (single continuous stroke) mid-stretch and 2px rounded line icons only.
 5. Ensure all text meets WCAG AA contrast against its background.
 6. Ease-in-out softness in every visual detail: rounded corners, soft shadows, no hard edges.
 </execution_rules>
