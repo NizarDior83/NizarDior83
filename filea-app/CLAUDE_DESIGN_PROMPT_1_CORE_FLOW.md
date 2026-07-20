@@ -66,7 +66,7 @@ Everyday people (not gym athletes) — office workers with stiff hips and backs,
 
 <screen name="Routine Player" device="mobile-375">
   <elements>
-    <element type="illustration" placeholder="Large one-line human figure (single continuous stroke) in seated neck stretch, centered" />
+    <element type="illustration" placeholder="Large illustration of Léa — a cute petite adult woman guide (flat lineless vector, dark chestnut bun with gold scrunchie, sage green top, deep forest leggings) demonstrating a seated neck stretch, centered" />
     <element type="heading">Neck Release</element>
     <element type="timer" label="0:24" style="large tabular countdown" />
     <element type="progress-bar" label="Stretch 3 of 9" />
@@ -78,7 +78,7 @@ Everyday people (not gym athletes) — office workers with stiff hips and backs,
 
 <screen name="Completion" device="mobile-375">
   <elements>
-    <element type="illustration" placeholder="Figure in relaxed pose with soft gold radiating arcs" />
+    <element type="illustration" placeholder="Léa (same cute petite guide) with arms raised in soft celebration, small cat companion at her feet, soft gold radiating arcs" />
     <element type="heading">Nicely done 🌿</element>
     <element type="stats-row" items="8 min, 9 stretches, 5-day streak" />
     <element type="chip-group" label="How do you feel now?" options="Looser, Same, Amazing" />

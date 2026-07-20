@@ -1,10 +1,35 @@
-# 🐱 FILEA CHARACTER — "Fil" the Stretching Cat
+# 🧍‍♀️🐱 FILEA CHARACTERS — "Léa" & "Fil"
 
-> Filea's mascot & guide. Companion docs: [BRAND_KIT.md](./BRAND_KIT.md)
+> Filea's guide duo. Companion docs: [BRAND_KIT.md](./BRAND_KIT.md) · Full PACT prompts: [GEMINI_ASSET_PROMPTS.md](./GEMINI_ASSET_PROMPTS.md)
 
 ---
 
-## 1. Concept
+## ⭐ CHARACTER 1 — "Léa" (primary guide)
+
+| Element | Definition |
+|---|---|
+| **Name** | Léa (from Fi-*léa* — the brand carries her name) |
+| **Who** | A petite adult woman in her mid-20s with an unmistakably cute, warm charm |
+| **Role in app** | THE guide: demonstrates every stretch, welcomes you, celebrates with you |
+| **Personality** | Warm, encouraging, serene, a touch playful — cute without being childish |
+| **Age-rating fit** | 3+ : wholesome, modest sportswear, kind energy |
+
+**Visual spec (identity lock — full PACT blueprint in GEMINI_ASSET_PROMPTS.md):**
+- Petite (~155 cm), softly athletic, slightly stylized cute proportions (marginally larger head/eyes) while clearly an adult
+- Soft rounded features, large friendly warm-brown eyes, rosy cheeks, small dimples
+- Warm light-olive Mediterranean skin; dark chestnut hair in a small messy bun, two loose face-framing strands, **Soft Gold `#E8C468` scrunchie** (her signature)
+- Wardrobe: modest Sage Green `#5B8A72` short-sleeve top, Deep Forest `#2F4F43` leggings, tiny mist ankle socks, Dusk Lilac `#9187B5` yoga mat
+- Style: flat lineless vector, soft shadows, brand palette only — never photorealistic, never sexualized
+
+**Signature expressions:** serene closed-eye calm (default) · joyful dimpled smile (celebrations) · soft focus (mid-stretch) · sleepy-cozy (Sleep mode) · playful wink (rare delight moments)
+
+---
+
+## 🐱 CHARACTER 2 — "Fil" the cat (companion)
+
+Fil is Léa's cat — he appears *with* her (curled beside her child's pose, mimicking her Cat-Cow, celebrating at her feet) and solo in tiny mascot moments (empty states, notifications). He never replaces her as the demonstrator.
+
+## 1. Concept (Fil)
 
 | Element | Definition |
 |---|---|
@@ -15,8 +40,9 @@
 | **Age-rating fit** | 3+ friendly: soft shapes, friendly face, zero edge |
 
 **Division of labor with the illustration system:**
-- **Fil (the cat)** → mascot moments: onboarding, empty states, streak celebrations, notifications icon, loading, Sleep mode companion
-- **Flat faceless human figures** → actual stretch/pose demonstrations (accuracy matters there)
+- **Léa** → demonstrates all stretches & poses, stars in onboarding, splash, celebrations, Sleep mode
+- **Fil (the cat)** → companion beside Léa + solo mascot micro-moments: empty states, notification icon, loading
+- **One-line thread figures** → minimal UI diagrams only (category tiles, tiny pose pictograms in lists)
 
 ## 2. Visual Specification
 
@@ -72,9 +98,10 @@ Append to each: *"Same character as the reference sheet: Fil, flat vector sage-g
 Add this line to the `<design_system>` block of both existing Claude Design prompts (or to a re-run):
 
 ```
-<mascot>
-  App mascot "Fil": a flat-vector calm cat, sage green #5B8A72 body, cream #EFF3EF belly, closed-happy arc eyes, dusk lilac #9187B5 nose. Appears ONLY in: onboarding greeting, empty states, streak celebration on Completion screen, and Sleep screens (curled asleep). Human pose demonstrations remain one-line human figures — the cat never demonstrates the stretches.
-</mascot>
+<characters>
+  Guide "Léa": a cute petite adult woman (mid-20s), flat lineless vector style — soft rounded features, large warm-brown eyes, rosy cheeks, dark chestnut messy bun with soft gold #E8C468 scrunchie, modest sage green #5B8A72 top and deep forest #2F4F43 leggings. She demonstrates all stretches and appears on onboarding, player, completion, and Sleep screens. Wholesome and 3+ friendly, never photorealistic.
+  Mascot "Fil": her flat-vector calm cat, sage green #5B8A72 body, mist #EFF3EF belly, closed-happy arc eyes. Appears small beside Léa or solo in empty states — never demonstrates stretches.
+</characters>
 ```
 
 And add to `<execution_rules>`:

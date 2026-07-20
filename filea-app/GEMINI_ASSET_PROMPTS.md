@@ -1,151 +1,223 @@
-# 🎨 GEMINI ASSET PROMPTS — Filea
+# 🎨 GEMINI ASSET PROMPTS — Filea (PACT Format)
 
-> Ready-to-paste prompts for **Gemini** (image generation) to produce every visual asset Filea needs.
+> Ready-to-paste **PACT / ACT** prompts for **Gemini** image generation — every visual asset Filea needs.
+> Main character: **Léa** (cute petite adult guide) · Companion: **Fil** the cat
 > Companion docs: [BRAND_KIT.md](./BRAND_KIT.md) · [FILEA_CHARACTER.md](./FILEA_CHARACTER.md)
 
 ---
 
 ## How to use
 
-1. Paste the **Global Style Block** at the top of EVERY prompt (keeps all assets consistent).
-2. Then paste one asset prompt below it.
-3. Generate assets in the listed order — the character sheet (#3) must exist before the Fil pose set (#4), so you can attach it as reference.
-4. Ask for PNG with transparent background where noted; upscale before export.
+1. Generate **Deliverable 1 (Anchor PACT)** first — this is Léa's identity lock. Save the best result.
+2. For every scenario/asset after that, paste **the Anchor P block + the scenario's A | C | T** (and attach the saved Léa image as reference when Gemini allows it).
+3. The **T block is identical everywhere** — never rewrite it, copy it verbatim. That's what keeps all assets in one style.
+4. Non-character assets (icon, logo, notification icon) use A | C | T only (no persona).
 
 ---
 
-## 🌐 GLOBAL STYLE BLOCK (prefix for every prompt)
+## 🔒 DELIVERABLE 1 — ANCHOR PACT PROMPT (Léa)
 
 ```
-BRAND STYLE — apply strictly:
-Flat vector illustration style, minimal, soft rounded shapes, subtle soft shadows only, no gradients unless specified, no photorealism, no 3D render, no realistic textures. Calm wellness-app aesthetic, suitable for a 3+ age rating.
-PALETTE (use ONLY these): Sage Green #5B8A72, Deep Forest #2F4F43, Dusk Lilac #9187B5, Soft Gold #E8C468, Morning Mist #EFF3EF, Off-White #FFFFFF, Ink Moss #22302B, Night Indigo #3A4A6B.
-SIGNATURE MOTIF: "the thread" — a single continuous 2px line with rounded caps; line illustrations are always one uninterrupted stroke.
-AVOID: hard edges, aggressive energy, gym/sweat imagery, neon colors, text unless specified, watermarks.
+**P - Persona:** Léa, a petite adult woman in her mid-20s, ~155 cm, with an
+unmistakably cute, warm charm — soft rounded facial features, large friendly
+warm-brown eyes with subtle sparkle, small nose, gentle rosy cheeks, bright
+kind smile with small dimples. Warm light-olive Mediterranean skin tone.
+Dark chestnut hair in a small soft messy bun with two loose face-framing
+strands, held by a Soft Gold #E8C468 scrunchie. Slightly stylized cute
+proportions (marginally larger head and eyes than realistic) while remaining
+clearly an ADULT woman. Wardrobe: modest Sage Green #5B8A72 short-sleeve
+athletic top, Deep Forest #2F4F43 full-length leggings, barefoot with tiny
+Morning Mist #EFF3EF ankle socks. Strictly uniform hair color, no unrequested
+streaks. Strictly modest, wholesome sportswear — nothing revealing.
+
+**A - Action:** Standing dead center, squarely facing the camera with direct,
+warm eye contact, shoulders parallel to the lens, relaxed arms, gentle
+welcoming smile.
+
+**C - Context:** A plain flat Morning Mist #EFF3EF studio backdrop.
+Strictly no background objects.
+
+**T - Technical:** Flat vector illustration, lineless with soft rounded
+shapes, subtle soft shadows only, no gradients, no outlines, no photorealism,
+no 3D render. Limited palette ONLY: Sage Green #5B8A72, Deep Forest #2F4F43,
+Dusk Lilac #9187B5, Soft Gold #E8C468, Morning Mist #EFF3EF, Off-White
+#FFFFFF, Ink Moss #22302B, Night Indigo #3A4A6B. Calm wellness-app
+aesthetic, 3+ age-rating friendly, cute but serene energy.
+
+**Negative Prompt:** side profile, looking away, asymmetrical features,
+multiple people, realistic skin texture, photorealism, revealing or
+sexualized clothing, gym-bro energy, sweat, hard edges, neon colors, text,
+watermark, child-like appearance.
 ```
 
 ---
 
-## 1. APP ICON
+## 🔒 DELIVERABLE 2 — BODY CHARACTER SHEET (Léa)
 
 ```
-App icon for "Filea", a calm daily stretching & mobility app.
-A rounded-square iOS/Android app icon. Background: smooth vertical gradient from Sage Green #5B8A72 to Deep Forest #2F4F43. Centered: a single continuous off-white (#EFF3EF) 2px-weight line (scaled thick for icon legibility) that draws an abstract human figure easing into a gentle forward fold — one uninterrupted elegant stroke, rounded caps, echoing both a stretching body and a relaxed thread.
-Composition: mark centered with generous padding (mark occupies ~55% of tile). No text. Flat, crisp, minimal — must stay readable at 48px.
-Output: 1024×1024, square, full-bleed.
+**Build & Silhouette:** Petite, softly athletic adult frame (~155 cm); gently
+rounded shoulders, upright relaxed yoga posture, weight evenly balanced;
+silhouette reads as small, light, and springy — flexible, not muscular.
+
+**Key Anatomical Markers:** Small dimples when smiling; two loose chestnut
+face-framing hair strands; Soft Gold scrunchie always on the bun (her
+signature); no tattoos, no scars, no accessories other than the scrunchie.
+
+**Wardrobe Blueprint:** (1) Sage Green #5B8A72 modest short-sleeve fitted
+athletic top, matte cotton-jersey look, hem at hip; (2) Deep Forest #2F4F43
+full-length high-waist leggings, matte, no logos; (3) Morning Mist #EFF3EF
+tiny ankle socks, usually barefoot on the mat; (4) prop when relevant:
+a Dusk Lilac #9187B5 rolled or unrolled yoga mat.
 ```
 
-## 2. LOGO / WORDMARK
+---
+
+## 🔒 DELIVERABLE 3 — FACE REACTION PROMPTS (swap into A block)
 
 ```
-Logo wordmark for "filea" (all lowercase), a calm stretching & mobility app.
-The word "filea" in a soft rounded geometric grotesque style (reference: Bricolage Grotesque), color Ink Moss #22302B on a plain white background. The crossbar of the "f" extends leftward into a single continuous thin line that gently waves — like a relaxed thread — and its end curls into a small open loop. The line has rounded caps, weight matching the font's thin strokes.
-Also produce a variant: wordmark in Off-White #FFFFFF on Deep Forest #2F4F43 background.
-Flat vector look, generous letter spacing, no other decoration, no taglines.
-Output: horizontal lockup, 3:1 aspect ratio, transparent background for the dark-text version.
+1. **Serene (default in-app):** Eyes softly closed in two calm happy arcs,
+   gentle closed-lip smile, features fully relaxed — mid-breath tranquility.
+2. **Joy/Encouragement:** Wide genuine smile with dimples, eyes crinkling
+   warmly at the corners, head tilted slightly — celebrating your streak.
+3. **Focus:** Eyes open and softly attentive, brows level, lips gently
+   pressed — mid-stretch concentration, calm not strained.
+4. **Sleepy/Cozy:** Heavy-lidded eyes almost closed, tiny content smile,
+   one hand mid-yawn cover — Sleep-routine mood.
+5. **Playful/Cute:** One eye winked shut, bright smile, slight head tilt
+   with a loose strand swinging — used sparingly for delight moments.
 ```
 
-## 3. CHARACTER SHEET — "Fil" the cat (generate BEFORE #4)
+---
+
+## 🎬 DELIVERABLE 4 — SCENARIO ACT PROMPTS (app assets)
+
+> Rule: never re-describe Léa's appearance — the Anchor P block (pasted above each) handles identity. T is duplicated verbatim from Deliverable 1.
 
 ```
-Character design sheet for "Fil", the mascot of a stretching & yoga mobile app.
-CHARACTER: a slightly chubby, serene cat built from soft continuous curves. Sage Green #5B8A72 body, Morning Mist #EFF3EF belly and muzzle, Deep Forest #2F4F43 inner ears and tail tip, tiny Dusk Lilac #9187B5 nose. Eyes are simple closed-happy arcs, gentle smile. Zen, cozy, friendly energy — like a cat mid-morning-stretch. Lineless flat design with subtle soft shadows.
-SHEET LAYOUT: full turnaround — front view, side view, back view, 3/4 view — plus 4 expression studies (serene, happy, sleepy, celebrating with tiny Soft Gold #E8C468 sparkles). Clean white background, professional character-sheet layout with faint labels.
-MOOD: calm, warm, breathable — wellness aesthetic, NOT energetic cartoon. 3+ friendly.
-Output: 16:9 landscape sheet.
+1. CHARACTER SHEET / TURNAROUND (generate right after Anchor)
+   A: Professional character turnaround — Léa in front view, side view, back
+      view, and 3/4 view standing relaxed, plus a row of 5 small face studies
+      using reactions 1–5. | C: Clean flat white sheet layout with faint
+      Pale Mist #DCE4DD label lines, evenly spaced grid. | T: [paste T verbatim]
+
+2. SPLASH / HERO
+   A: Léa seated cross-legged dead center, hands resting on knees, serene
+      face (reaction 1), a single continuous Sage Green 2px "thread" line
+      swirling gently around her and curling into an open loop above.
+   | C: Morning Mist #EFF3EF background with a soft white radial glow behind
+      her, nothing else; portrait 9:19.5 composition, subject in lower-center
+      third. | T: [paste T verbatim]
+
+3. ONBOARDING 1 — "Check in"
+   A: Léa seated cross-legged, one hand on her chest, serene face; three
+      small floating dots (Soft Gold, Sage, Dusk Lilac) orbit her head.
+   | C: Flat Morning Mist background, 4:3, subject centered. | T: [verbatim]
+
+4. ONBOARDING 2 — "Stretch anywhere"
+   A: Léa in a standing side-bend, arms overhead curving left, focused face
+      (reaction 3). | C: Flat background with one simple flat window shape
+      to the right casting a Soft Gold #E8C468 light block on the floor,
+      4:3. | T: [verbatim]
+
+5. ONBOARDING 3 — "Wind down"
+   A: Léa in child's pose, sleepy face hidden, with Fil (small Sage Green
+      #5B8A72 flat-vector cat with Morning Mist belly) curled asleep beside
+      her. | C: Night Indigo #3A4A6B flat crescent moon and two tiny stars
+      top-right on Morning Mist background, 4:3. | T: [verbatim]
+
+6. POSE LIBRARY MASTER (repeat per exercise, changing only the pose)
+   A: Léa demonstrating a seated neck stretch — right hand gently guiding
+      her head toward the right shoulder, left arm relaxed, focus face; a
+      single Sage Green accent dot marks the stretched muscle (left neck).
+   | C: Plain white background, full body visible, side-on 3/4 camera,
+      1:1 transparent. | T: [verbatim]
+   ↳ Variants: Cat-Cow (on mat, with Fil mimicking beside her), Hip Flexor
+     Lunge, Hamstring Fold, Child's Pose, Supine Twist, Legs Up the Wall,
+     Shoulder Rolls, Tree Pose, Wall Sit (Isometric).
+
+7. COMPLETION / CELEBRATION
+   A: Léa standing with both arms raised in soft celebration, joy face
+      (reaction 2), small Soft Gold #E8C468 sparkles floating around her,
+      Fil at her feet with paws up. | C: Morning Mist background, subtle
+      Soft Gold arc behind, 1:1. | T: [verbatim]
+
+8. SLEEP MODE
+   A: Léa lying curled on her side on the Dusk Lilac mat, sleepy face
+      (reaction 4), Fil curled into her. | C: Dark scene — background
+      #151915 flat, Night Indigo crescent moon, accents in #7FB299 only,
+      16:9. | T: [verbatim]
+
+9. EMPTY STATE / TIPS
+   A: Léa peeking from the right edge of frame — only head, one shoulder
+      and one waving hand visible, playful face (reaction 5).
+   | C: Transparent background, sticker-style, 1:1. | T: [verbatim]
+
+10. STORE FEATURE GRAPHIC
+    A: Léa mid tree-pose at right of frame, serene face, the thread-line
+       flowing from her hands leftward and underlining empty space reserved
+       for the wordmark; Fil doing a cat-stretch at her feet.
+    | C: 1024×500 landscape, Morning Mist background, one Soft Gold sun arc
+       top-right, one Dusk Lilac wave bottom-left, left half kept clear for
+       text overlay. | T: [verbatim]
 ```
 
-## 4. FIL POSE SET (attach the character sheet from #3 as reference)
+---
 
-Generate each as its own image, appending: *"Same character as the attached reference sheet. Flat lineless vector, soft shadow, transparent background, sticker-style."*
-
-```
-a) Fil doing a classic cat stretch — front paws extended forward, back arched, tail curled up happily, eyes closed in bliss.
-b) Fil curled into a crescent, fully asleep, tiny "zzz" in Soft Gold #E8C468, subtle Night Indigo #3A4A6B crescent moon behind.
-c) Fil sitting upright with both paws raised in gentle celebration, small Soft Gold sparkles around him.
-d) Fil sitting calmly, one paw raised in a friendly wave.
-e) Fil peeking from the right edge of the frame — only head and one paw visible, curious calm expression.
-f) Fil balancing on hind legs in a yoga tree pose, front paws together above his head, perfectly serene.
-Output each: 1024×1024, transparent PNG.
-```
-
-## 5. SPLASH SCREEN
+## 🧩 NON-CHARACTER ASSETS (ACT only — no persona)
 
 ```
-Mobile app splash screen for "Filea", 9:19.5 portrait (1284×2778).
-Background: Morning Mist #EFF3EF with a very subtle radial glow of white at center. In the center: the app's one-line mark — a single continuous Sage Green #5B8A72 line drawing an abstract figure in a gentle forward fold, rounded caps. Below it, small and quiet: the "filea" wordmark in Ink Moss #22302B.
-Bottom third: the thread-line continues from the mark downward as a barely-visible Pale Mist #DCE4DD wave, suggesting motion and breath.
-Extremely minimal, lots of empty space, serene. No other elements.
-```
+A. APP ICON
+   A: A single continuous Off-White #EFF3EF line (thick weight for icon
+      legibility, rounded caps) drawing an abstract figure easing into a
+      gentle forward fold — one uninterrupted stroke, centered, occupying
+      ~55% of the tile. | C: Rounded-square app icon tile, smooth vertical
+      gradient Sage Green #5B8A72 → Deep Forest #2F4F43, 1024×1024, no
+      text. | T: Flat minimal vector mark, crisp edges, must stay readable
+      at 48px; no other elements.
 
-## 6. ONBOARDING ILLUSTRATIONS (set of 3, same style)
+B. LOGO / WORDMARK
+   A: The word "filea" all lowercase in a soft rounded grotesque style
+      (reference: Bricolage Grotesque), the crossbar of the "f" extending
+      leftward into a thin continuous thread-line that waves gently and
+      ends in a small open loop. | C: Ink Moss #22302B text on transparent
+      background, 3:1 horizontal lockup; second variant Off-White on Deep
+      Forest #2F4F43. | T: Flat vector lettering, generous spacing, no
+      decoration, no tagline.
 
-```
-Set of 3 onboarding illustrations for a calm stretching app, consistent style: one-line human figures — each figure drawn as ONE single continuous Sage Green #5B8A72 stroke (2px feel, rounded caps) on Morning Mist #EFF3EF background, accompanied by small flat accent shapes only.
+C. CATEGORY TILES (9 mini-tiles — one-line figures, NOT Léa)
+   A: A one-line human figure (single continuous Ink Moss #22302B stroke,
+      rounded caps) per category: Wake Up = arms-up morning stretch + tiny
+      sun arc; Posture Reset = seated tall on chair; Full Body = standing
+      forward fold; Sleep = child's pose + crescent; Expert = triangle pose;
+      Hips = low lunge; Hamstrings = seated fold; Lower Back = knee-to-chest;
+      Isometric = wall-sit. | C: 512×512 tile, background = category accent
+      at 12% opacity (gold, lilac, sage, indigo, ink, teal, teal, teal,
+      slate), ⊕ symbol small top-left in the accent color. | T: Minimal
+      one-line diagram style, no fill, no shading, no face.
 
-a) "Check in" — a one-line figure sitting cross-legged, hand on chest, with three small floating chips (Soft Gold, Sage, Dusk Lilac dots) orbiting gently.
-b) "Stretch anywhere" — a one-line figure in a standing side-bend beside a simple flat window shape with morning light (Soft Gold #E8C468 tint).
-c) "Wind down" — a one-line figure in child's pose under a flat Night Indigo #3A4A6B crescent moon and two tiny stars; Fil the sage-green cat curled asleep beside them (small, secondary).
-
-Output each: 4:3, transparent or mist background PNG.
-```
-
-## 7. POSE ILLUSTRATION STYLE MASTER (the in-app exercise art)
-
-```
-Style sample for exercise illustrations: a one-line human figure in a seated neck stretch — the ENTIRE figure drawn as one single continuous Ink Moss #22302B line, 2px weight, rounded caps, elegant and anatomically readable, on plain white. A single Sage Green #5B8A72 accent dot marks the muscle area being stretched (side of neck).
-Minimal, precise, calm. No face details, no shading, no fill.
-Output: 1:1, transparent PNG.
-(Reuse this exact style description for every pose in the library: Cat-Cow, Hip Flexor Lunge, Hamstring Fold, Child's Pose, Supine Twist, Legs Up the Wall, Shoulder Rolls, etc. — one prompt per pose, changing only the pose description and accent-dot location.)
-```
-
-## 8. CATEGORY TILE ART (9 mini illustrations)
-
-```
-Set of 9 small square tile illustrations for routine categories, consistent style: one-line figure (single continuous stroke, rounded caps) in Ink Moss #22302B on a soft tinted background at 12% opacity of the category color, with the ⊕ symbol small in the top-left corner in the category color.
-
-1. Wake Up (Soft Gold #E8C468 tint) — figure reaching arms up in a morning stretch, tiny sun arc.
-2. Posture Reset (Dusk Lilac #9187B5) — seated figure straightening tall on a chair.
-3. Full Body (Sage #5B8A72) — figure in a standing forward fold.
-4. Sleep (Night Indigo #3A4A6B) — figure in child's pose, crescent moon.
-5. Expert (Ink Moss #22302B) — figure in a deep triangle pose.
-6. Hips (teal tint) — figure in a low lunge.
-7. Hamstrings (teal tint) — seated forward fold, legs extended.
-8. Lower Back (teal tint) — supine knee-to-chest figure.
-9. Isometric (slate grey tint) — figure holding a wall-sit, small static lines.
-
-Output each: 1:1, 512×512.
-```
-
-## 9. PLAY STORE / APP STORE FEATURE GRAPHIC
-
-```
-Feature graphic for the Filea app store listing, 1024×500 landscape.
-Left half: "filea" wordmark large in Ink Moss #22302B on Morning Mist #EFF3EF, with the tagline "Move better every day" in Karla-style sans, Stone Grey #7C7A75. The thread-line motif underlines the wordmark and flows rightward.
-Right half: the thread-line transforms into a one-line human figure in a graceful standing stretch (Sage Green #5B8A72), with Fil the cat doing his cat-stretch at the figure's feet (small). One Soft Gold #E8C468 sun arc top-right, one Dusk Lilac #9187B5 wave bottom-left — dawn to dusk.
-Flat, calm, breathable spacing. No screenshots, no buttons.
-```
-
-## 10. NOTIFICATION / SMALL ICON
-
-```
-Monochrome notification icon: the Filea one-line mark (abstract figure in forward fold, single continuous stroke) simplified to its minimal readable form, solid white #FFFFFF on transparent background, bold enough to read at 24×24 px. Flat silhouette-style single color only (Android notification icon spec).
-Output: 512×512 transparent PNG.
+D. NOTIFICATION ICON
+   A: The Filea one-line mark (abstract forward-fold figure, single stroke)
+      simplified to its minimal readable silhouette. | C: Solid White
+      #FFFFFF on transparent, 512×512, must read at 24×24 px. | T: Flat
+      single-color silhouette (Android notification spec), no detail.
 ```
 
 ---
 
 ## ✅ Asset checklist
 
-| # | Asset | Format | Status |
-|---|---|---|---|
-| 1 | App icon | 1024×1024 | ☐ |
-| 2 | Logo / wordmark (light + dark) | 3:1 | ☐ |
-| 3 | Fil character sheet | 16:9 | ☐ |
-| 4 | Fil pose set (6 stickers) | 1:1 transparent | ☐ |
-| 5 | Splash screen | 1284×2778 | ☐ |
-| 6 | Onboarding set (3) | 4:3 | ☐ |
-| 7 | Pose style master (+ library) | 1:1 transparent | ☐ |
-| 8 | Category tiles (9) | 512×512 | ☐ |
-| 9 | Store feature graphic | 1024×500 | ☐ |
-| 10 | Notification icon | 512×512 | ☐ |
+| # | Asset | Prompt | Format | Status |
+|---|---|---|---|---|
+| 1 | Léa anchor image | Deliverable 1 | 1:1 | ☐ |
+| 2 | Léa turnaround sheet | Scenario 1 | 16:9 | ☐ |
+| 3 | Splash / hero | Scenario 2 | 1284×2778 | ☐ |
+| 4 | Onboarding ×3 | Scenarios 3–5 | 4:3 | ☐ |
+| 5 | Pose library (10+) | Scenario 6 | 1:1 transparent | ☐ |
+| 6 | Celebration | Scenario 7 | 1:1 | ☐ |
+| 7 | Sleep mode | Scenario 8 | 16:9 | ☐ |
+| 8 | Empty state sticker | Scenario 9 | 1:1 transparent | ☐ |
+| 9 | Store feature graphic | Scenario 10 | 1024×500 | ☐ |
+| 10 | App icon | Asset A | 1024×1024 | ☐ |
+| 11 | Logo (light + dark) | Asset B | 3:1 | ☐ |
+| 12 | Category tiles ×9 | Asset C | 512×512 | ☐ |
+| 13 | Notification icon | Asset D | 512×512 | ☐ |
