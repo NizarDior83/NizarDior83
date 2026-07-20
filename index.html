@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier — Learn Art, Relax, Create</title>
+<meta name="description" content="Learn clay, acrylic and oil painting, color mixing and color by numbers. Guided art therapy and relaxation sessions for every level.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
+<style>
+  :root {
+    --color-primary: #18181B;
+    --color-on-primary: #FFFFFF;
+    --color-secondary: #3F3F46;
+    --color-accent: #DB2777;          /* creative pink, AA on white */
+    --color-accent-soft: #FCE7F3;
+    --color-background: #FAF7F2;      /* warm canvas */
+    --color-surface: #FFFFFF;
+    --color-foreground: #1C1917;
+    --color-muted: #F0EAE2;
+    --color-border: #E7E0D8;
+    --color-ring: #18181B;
+    /* paint accents */
+    --paint-terracotta: #C65D3B;
+    --paint-ochre: #E9B44C;
+    --paint-sage: #6B9080;
+    --paint-blue: #3D5A80;
+    --paint-clay: #9C6644;
+    --space-xs: .25rem; --space-sm: .5rem; --space-md: 1.5rem;
+    --space-lg: 2rem; --space-xl: 3rem; --space-2xl: 4rem; --space-3xl: 6rem;
+    --shadow-sm: 0 1px 2px rgba(28,25,23,.05);
+    --shadow-md: 0 4px 6px rgba(28,25,23,.08);
+    --shadow-lg: 0 10px 24px rgba(28,25,23,.10);
+    --shadow-xl: 0 20px 40px rgba(28,25,23,.14);
+    --radius: 14px;
+    --font-head: "Fredoka", system-ui, sans-serif;
+    --font-body: "Nunito", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-size: 1rem; line-height: 1.6;
+    overflow-x: hidden;
+  }
+  /* subtle paper grain over the whole canvas */
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  body > * { position: relative; z-index: 1; }
+  h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 600; line-height: 1.15; }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+  button { font: inherit; cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--color-ring); outline-offset: 2px; border-radius: 4px; }
+  .container { max-width: 72rem; margin-inline: auto; padding-inline: var(--space-md); }
+  .section { padding-block: var(--space-3xl); }
+  .kicker {
+    display: inline-flex; align-items: center; gap: .6rem; font-weight: 700; font-size: .85rem;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+  .kicker::before {
+    content: ""; width: 1.6rem; height: .3rem; border-radius: 999px;
+    background: linear-gradient(90deg, var(--color-accent), var(--paint-ochre));
+  }
+  .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: var(--space-sm); }
+  .section-sub { color: var(--color-secondary); max-width: 38rem; margin-bottom: var(--space-xl); }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--color-background) 88%, white);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .nav-inner { display: flex; align-items: center; gap: var(--space-md); min-height: 4.25rem; }
+  .logo { display: flex; align-items: center; gap: .6rem; font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; text-decoration: none; }
+  .logo svg { width: 2rem; height: 2rem; }
+  .nav-links { display: flex; gap: var(--space-md); margin-left: auto; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-weight: 600; color: var(--color-secondary);
+    padding: .6rem .25rem; transition: color 200ms ease;
+  }
+  .nav-links a:hover { color: var(--color-accent); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    padding: .8rem 1.5rem; border-radius: 10px; font-weight: 700; text-decoration: none;
+    border: 2px solid transparent; transition: transform 200ms ease, background 200ms ease, color 200ms ease, box-shadow 200ms ease;
+    min-height: 44px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #DB2777, #C65D3B); color: #fff;
+    box-shadow: 0 6px 18px rgba(219,39,119,.35); background-size: 150% 150%;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(219,39,119,.45); background-position: 90% 90%; }
+  .btn-secondary { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+  .btn-secondary:hover { background: var(--color-primary); color: var(--color-on-primary); }
+  .nav .btn { padding: .55rem 1.15rem; }
+  .nav-toggle { display: none; background: none; border: none; padding: .5rem; min-width: 44px; min-height: 44px; }
+  .nav-toggle svg { width: 1.6rem; height: 1.6rem; }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; padding-block: var(--space-3xl); overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-2xl); align-items: center; }
+  .hero h1 { font-size: clamp(2.4rem, 5.5vw, 3.9rem); margin-bottom: var(--space-md); }
+  .hero h1 .swash {
+    background: linear-gradient(92deg, #DB2777 10%, #C65D3B 55%, #E9B44C 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p.lead { font-size: 1.15rem; color: var(--color-secondary); max-width: 34rem; margin-bottom: var(--space-lg); }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-xl); }
+  .hero-stats { display: flex; gap: var(--space-xl); flex-wrap: wrap; }
+  .stat b { display: block; font-family: var(--font-head); font-size: 1.6rem; }
+  .stat span { color: var(--color-secondary); font-size: .9rem; }
+  .hero-art { position: relative; min-height: 22rem; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .85; }
+  .hero-canvas {
+    position: relative; z-index: 1; background: var(--color-surface);
+    border: 1px solid var(--color-border); border-radius: var(--radius);
+    box-shadow: var(--shadow-xl); padding: var(--space-md);
+    transform: rotate(2deg);
+  }
+  .hero-canvas svg { display: block; width: 100%; height: auto; border-radius: 8px; }
+  .chip {
+    position: absolute; z-index: 2; display: flex; align-items: center; gap: .5rem;
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: 999px; padding: .5rem 1rem; font-weight: 700; font-size: .85rem;
+    box-shadow: var(--shadow-lg);
+  }
+  .chip svg { width: 1.1rem; height: 1.1rem; }
+
+  /* ---------- Course cards ---------- */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+  .card {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius); padding: var(--space-md);
+    box-shadow: var(--shadow-sm); transition: box-shadow 250ms ease, transform 250ms ease;
+    display: flex; flex-direction: column; gap: .8rem; position: relative;
+  }
+  .card { overflow: hidden; }
+  .card::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 5px;
+    background: linear-gradient(90deg, var(--color-accent), var(--paint-ochre), var(--paint-sage), var(--paint-blue));
+    transform: scaleX(0); transform-origin: left; transition: transform 300ms ease;
+  }
+  .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+  .card:hover::before { transform: scaleX(1); }
+  .card:hover .card-icon { transform: rotate(-6deg) scale(1.06); }
+  .card-icon { transition: transform 250ms ease; }
+  .card-icon {
+    width: 3.25rem; height: 3.25rem; border-radius: 12px;
+    display: grid; place-items: center; color: #fff;
+  }
+  .card-icon svg { width: 1.7rem; height: 1.7rem; }
+  .card h3 { font-size: 1.25rem; }
+  .card p { color: var(--color-secondary); font-size: .95rem; flex: 1; }
+  .card-meta { display: flex; gap: .6rem; flex-wrap: wrap; }
+  .tag {
+    font-size: .75rem; font-weight: 700; padding: .25rem .7rem; border-radius: 999px;
+    background: var(--color-muted); color: var(--color-secondary);
+  }
+  .card-link {
+    font-weight: 700; color: var(--color-accent); text-decoration: none;
+    display: inline-flex; align-items: center; gap: .35rem; min-height: 44px; align-items: center;
+  }
+  .card-link svg { width: 1rem; height: 1rem; transition: transform 200ms ease; }
+  .card-link:hover svg { transform: translateX(4px); }
+
+  /* ---------- Calm band ---------- */
+  .calm { background: linear-gradient(135deg, #EFF3EF, #E4EDE7); border-block: 1px solid var(--color-border); }
+  .calm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: center; }
+  .calm ul { list-style: none; display: grid; gap: var(--space-md); }
+  .calm li { display: flex; gap: .9rem; align-items: flex-start; }
+  .calm li svg { width: 1.5rem; height: 1.5rem; flex-shrink: 0; color: var(--paint-sage); margin-top: .2rem; }
+  .calm li b { display: block; font-family: var(--font-head); }
+  .breath-wrap { display: grid; place-items: center; }
+  .breath {
+    width: 15rem; height: 15rem; border-radius: 50%;
+    background: radial-gradient(circle, #6B9080 0%, #A4C3B2 70%);
+    display: grid; place-items: center; color: #fff; font-family: var(--font-head);
+    font-size: 1.1rem; box-shadow: var(--shadow-xl);
+    animation: breathe 8s ease-in-out infinite;
+  }
+  @keyframes breathe { 0%,100% { transform: scale(.82); } 50% { transform: scale(1); } }
+
+  /* ---------- Studio (interactive) ---------- */
+  .studio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); align-items: stretch; }
+  .panel {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius); padding: var(--space-lg); box-shadow: var(--shadow-md);
+    display: flex; flex-direction: column; gap: var(--space-md);
+  }
+  .panel h3 { font-size: 1.35rem; display: flex; align-items: center; gap: .6rem; }
+  .panel h3 svg { width: 1.4rem; height: 1.4rem; color: var(--color-accent); }
+  .mix-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--space-md); align-items: center; }
+  .mix-col { display: grid; gap: .5rem; justify-items: center; }
+  .swatch {
+    width: 5rem; height: 5rem; border-radius: 50%; border: 4px solid var(--color-surface);
+    box-shadow: var(--shadow-md); transition: background 250ms ease;
+  }
+  .mix-col select {
+    font: inherit; font-weight: 600; padding: .55rem .7rem; border-radius: 8px;
+    border: 1px solid var(--color-border); background: var(--color-surface); cursor: pointer; max-width: 100%;
+  }
+  .plus { font-family: var(--font-head); font-size: 1.6rem; color: var(--color-secondary); }
+  .mix-result { display: grid; gap: .6rem; justify-items: center; text-align: center; }
+  .swatch-result {
+    width: 7rem; height: 7rem; border-radius: 50%; border: 6px solid var(--color-surface);
+    box-shadow: var(--shadow-lg); transition: background 250ms ease;
+  }
+  .mix-recipe { font-weight: 700; }
+  .mix-hex { font-size: .85rem; color: var(--color-secondary); font-variant-numeric: tabular-nums; }
+  input[type="range"] { width: 100%; accent-color: var(--color-accent); cursor: pointer; height: 44px; }
+  .range-labels { display: flex; justify-content: space-between; font-size: .8rem; color: var(--color-secondary); font-weight: 700; }
+
+  .cbn-svg { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--color-border); background: #fff; }
+  .cbn-svg [data-num] { cursor: pointer; transition: fill 250ms ease; stroke: #B8AFA3; stroke-width: 1.2; }
+  .cbn-svg text { font-family: var(--font-head); font-size: 11px; fill: #78716C; pointer-events: none; }
+  .cbn-palette { display: flex; gap: .6rem; flex-wrap: wrap; }
+  .cbn-color {
+    width: 48px; height: 48px; border-radius: 12px; border: 3px solid transparent;
+    display: grid; place-items: center; color: #fff; font-family: var(--font-head); font-weight: 700;
+    box-shadow: var(--shadow-sm); transition: transform 200ms ease, border-color 200ms ease;
+  }
+  .cbn-color:hover { transform: translateY(-2px); }
+  .cbn-color[aria-pressed="true"] { border-color: var(--color-primary); transform: scale(1.08); }
+  .cbn-status { font-weight: 700; color: var(--paint-sage); min-height: 1.5em; }
+
+  /* ---------- Steps ---------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); counter-reset: step; }
+  .step {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius); padding: var(--space-lg); position: relative;
+  }
+  .step-num {
+    font-family: var(--font-head); font-weight: 700; font-size: 2.6rem;
+    color: var(--color-accent-soft); -webkit-text-stroke: 2px var(--color-accent);
+    line-height: 1; margin-bottom: var(--space-sm); display: block;
+  }
+  .step h3 { margin-bottom: .4rem; }
+  .step p { color: var(--color-secondary); font-size: .95rem; }
+
+  /* ---------- Testimonials ---------- */
+  .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+  .quote {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-md);
+  }
+  .quote p { font-style: italic; color: var(--color-secondary); flex: 1; }
+  .quote-who { display: flex; align-items: center; gap: .8rem; }
+  .avatar {
+    width: 2.9rem; height: 2.9rem; border-radius: 50%; display: grid; place-items: center;
+    color: #fff; font-family: var(--font-head); font-weight: 700;
+  }
+  .quote-who b { display: block; font-family: var(--font-head); }
+  .quote-who span { font-size: .85rem; color: var(--color-secondary); }
+  .stars { color: var(--paint-ochre); display: flex; gap: .15rem; }
+  .stars svg { width: 1.05rem; height: 1.05rem; }
+
+  /* ---------- CTA band + footer ---------- */
+  .cta-band {
+    background: var(--color-primary); color: var(--color-on-primary);
+    border-radius: calc(var(--radius) + 6px); padding: var(--space-2xl);
+    display: grid; grid-template-columns: 1.2fr auto; gap: var(--space-lg); align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-band::after {
+    content: ""; position: absolute; right: -4rem; top: -4rem; width: 16rem; height: 16rem;
+    border-radius: 50%; background: radial-gradient(circle, #DB2777 0%, transparent 70%); opacity: .5;
+  }
+  .cta-band h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); margin-bottom: .5rem; }
+  .cta-band p { color: #D4D4D8; max-width: 30rem; }
+  .cta-band .btn-primary { position: relative; z-index: 1; }
+  footer { padding: var(--space-2xl) 0 var(--space-lg); color: var(--color-secondary); }
+  .footer-grid { display: flex; justify-content: space-between; gap: var(--space-lg); flex-wrap: wrap; align-items: center; border-top: 1px solid var(--color-border); padding-top: var(--space-lg); }
+  .footer-links { display: flex; gap: var(--space-md); list-style: none; flex-wrap: wrap; }
+  .footer-links a { text-decoration: none; font-weight: 600; }
+  .footer-links a:hover { color: var(--color-accent); }
+
+  /* ---------- Marquee strip ---------- */
+  .marquee {
+    background: var(--color-primary); color: #FAF7F2; overflow: hidden;
+    padding-block: .85rem; border-block: 1px solid var(--color-border);
+  }
+  .marquee-track {
+    display: flex; gap: 2.5rem; width: max-content;
+    font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; white-space: nowrap;
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 2.5rem; }
+  .marquee-track i {
+    width: .55rem; height: .55rem; border-radius: 50%; display: inline-block; font-style: normal;
+  }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ---------- Reveal motion (JS-gated so content never hides without JS) ---------- */
+  .js .reveal { opacity: 0; transform: translateY(16px) scale(.97); transition: opacity 400ms ease, transform 400ms cubic-bezier(.34,1.4,.64,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .breath, .marquee-track { animation: none; }
+    * { transition-duration: 1ms !important; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 64rem) {
+    .cards, .steps, .quotes { grid-template-columns: repeat(2, 1fr); }
+    .hero-grid, .calm-grid, .studio-grid { grid-template-columns: 1fr; }
+    .hero-art { min-height: 20rem; margin-top: var(--space-lg); }
+  }
+  @media (max-width: 44rem) {
+    .section { padding-block: var(--space-2xl); }
+    .cards, .steps, .quotes { grid-template-columns: 1fr; }
+    .nav-links {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--color-surface); border-bottom: 1px solid var(--color-border);
+      flex-direction: column; padding: var(--space-md); gap: .25rem; box-shadow: var(--shadow-lg);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { display: block; padding: .8rem .5rem; }
+    .nav-toggle { display: grid; place-items: center; margin-left: auto; }
+    .nav .btn-primary { display: none; }
+    .cta-band { grid-template-columns: 1fr; text-align: left; }
+    .mix-row { grid-template-columns: 1fr; }
+    .plus { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======== NAV ======== -->
+<nav class="nav" aria-label="Main">
+  <div class="container nav-inner">
+    <a class="logo" href="#top" aria-label="Atelier home">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3C7 3 3 6.9 3 11.7c0 4.8 4 8.6 9 8.6.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.6 1.6-1.6h1.9c2.6 0 4.7-2.1 4.7-4.7C21 6.3 17 3 12 3Z" stroke="#18181B" stroke-width="1.7"/>
+        <circle cx="7.5" cy="10.5" r="1.3" fill="#DB2777"/><circle cx="11" cy="7.5" r="1.3" fill="#E9B44C"/>
+        <circle cx="15.5" cy="8.5" r="1.3" fill="#3D5A80"/><circle cx="8" cy="14.5" r="1.3" fill="#6B9080"/>
+      </svg>
+      Atelier
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#18181B" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#calm">Art therapy</a></li>
+      <li><a href="#studio">Try the studio</a></li>
+      <li><a href="#stories">Stories</a></li>
+    </ul>
+    <a class="btn btn-primary" href="#join">Start free</a>
+  </div>
+</nav>
+
+<!-- ======== HERO ======== -->
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <span class="kicker">Online art school for every level</span>
+      <h1>Make something <span class="swash">beautiful</span> with your own hands</h1>
+      <p class="lead">Learn clay, acrylic and oil painting with step-by-step courses — or simply unwind with guided art therapy, relaxing color-by-numbers and playful color-mixing labs.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#courses">Explore courses</a>
+        <a class="btn btn-secondary" href="#studio">Try it free</a>
+      </div>
+      <div class="hero-stats" role="list">
+        <div class="stat" role="listitem"><b>12,400+</b><span>happy learners</span></div>
+        <div class="stat" role="listitem"><b>60+</b><span>guided courses</span></div>
+        <div class="stat" role="listitem"><b>4.9 / 5</b><span>average rating</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <span class="blob" style="width:14rem;height:14rem;background:#FCE7F3;top:-2rem;right:-1rem"></span>
+      <span class="blob" style="width:9rem;height:9rem;background:#FDF3D8;bottom:-1rem;left:0"></span>
+      <span class="blob" style="width:7rem;height:7rem;background:#E4EDE7;top:40%;left:-2rem"></span>
+      <div class="hero-canvas">
+        <svg viewBox="0 0 400 300" role="img" aria-label="Colorful abstract landscape painting">
+          <rect width="400" height="300" fill="#FDF6EC"/>
+          <path d="M0 210 Q100 150 200 195 T400 180 V300 H0 Z" fill="#6B9080"/>
+          <path d="M0 240 Q120 200 240 235 T400 225 V300 H0 Z" fill="#3D5A80" opacity=".85"/>
+          <circle cx="310" cy="80" r="42" fill="#E9B44C"/>
+          <circle cx="310" cy="80" r="42" fill="none" stroke="#C65D3B" stroke-width="5" stroke-dasharray="8 14" opacity=".6"/>
+          <path d="M40 110 q30 -40 65 -8 q28 -26 52 2 q-8 26 -60 24 q-48 4 -57 -18Z" fill="#FFFFFF" opacity=".9"/>
+          <path d="M225 135 q22 -30 48 -6 q20 -18 38 2 q-6 20 -44 18 q-35 3 -42 -14Z" fill="#FFFFFF" opacity=".8"/>
+          <path d="M60 265 q40 -18 90 0 q50 18 110 -4" fill="none" stroke="#DB2777" stroke-width="7" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="chip" style="top:8%;left:-4%">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C65D3B" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v3m0 0c-3.5 0-6 2.2-6 5.5S8.5 17 12 17s6-2.2 6-5.5S15.5 6 12 6Zm-4.5 12h9M9 18v3h6v-3"/></svg>
+        Clay &amp; ceramics
+      </span>
+      <span class="chip" style="bottom:6%;right:-2%">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3D5A80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 3l3 3-9.5 9.5-4 1 1-4L18 3Z"/><path d="M3 21c2.5-.5 3.5-1.5 4-4"/></svg>
+        Oil painting
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- ======== MARQUEE ======== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Clay &amp; ceramics <i style="background:#C65D3B"></i> Acrylic painting <i style="background:#DB2777"></i> Oil painting <i style="background:#3D5A80"></i> Color mixing <i style="background:#E9B44C"></i> Color by numbers <i style="background:#6B9080"></i> Art therapy <i style="background:#DB2777"></i> Relaxation <i style="background:#C65D3B"></i></span>
+    <span>Clay &amp; ceramics <i style="background:#C65D3B"></i> Acrylic painting <i style="background:#DB2777"></i> Oil painting <i style="background:#3D5A80"></i> Color mixing <i style="background:#E9B44C"></i> Color by numbers <i style="background:#6B9080"></i> Art therapy <i style="background:#DB2777"></i> Relaxation <i style="background:#C65D3B"></i></span>
+  </div>
+</div>
+
+<!-- ======== COURSES ======== -->
+<section class="section" id="courses">
+  <div class="container">
+    <span class="kicker">Courses</span>
+    <h2 class="section-title">Pick your path, we'll guide every brushstroke</h2>
+    <p class="section-sub">Seven learning tracks, from getting your hands muddy to mastering glazing. Every course is broken into short, calm lessons you can finish with a cup of tea.</p>
+    <div class="cards">
+
+      <article class="card reveal">
+        <span class="card-icon" style="background:var(--paint-clay)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8m-7 0c1 2.5-.5 4-2.5 5.5C4.5 10 4 12 4 14c0 4 3.5 7 8 7s8-3 8-7c0-2-.5-4-2.5-5.5C15.5 7 14 5.5 15 3"/><path d="M7 14c1.5 1.2 3 1.8 5 1.8s3.5-.6 5-1.8"/></svg>
+        </span>
+        <h3>Clay &amp; Ceramics</h3>
+        <p>Hand-building, pinch pots, coiling and wheel basics. Feel the calm of shaping something real from a lump of earth.</p>
+        <div class="card-meta"><span class="tag">Beginner</span><span class="tag">8 weeks</span><span class="tag">Hands-on</span></div>
+        <a class="card-link" href="#join">Start sculpting
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="card reveal">
+        <span class="card-icon" style="background:var(--color-accent)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20c.5-3 1-4.5 3-6.5L17.5 3l3.5 3.5L10.5 17c-2 2-3.5 2.5-6.5 3Z"/><path d="M15.5 5.5l3 3"/></svg>
+        </span>
+        <h3>Acrylic Painting</h3>
+        <p>Fast-drying, forgiving and vibrant. Learn layering, brush control and bold color blocking on your very first canvas.</p>
+        <div class="card-meta"><span class="tag">Beginner</span><span class="tag">6 weeks</span><span class="tag">Most popular</span></div>
+        <a class="card-link" href="#join">Grab a brush
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="card reveal">
+        <span class="card-icon" style="background:var(--paint-blue)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 13l4.5-4.5 4 4L15 9l6 6M9 21h6m-3-4v4"/></svg>
+        </span>
+        <h3>Oil Painting</h3>
+        <p>The slow, luxurious classic. Master glazing, wet-on-wet blending and light — the way the old masters did it.</p>
+        <div class="card-meta"><span class="tag">Intermediate</span><span class="tag">10 weeks</span></div>
+        <a class="card-link" href="#join">Go classical
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="card reveal">
+        <span class="card-icon" style="background:var(--paint-ochre)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="10" r="5.5"/><circle cx="15" cy="14" r="5.5"/></svg>
+        </span>
+        <h3>Mixing Colors</h3>
+        <p>Why does blue and yellow make green? Build color wheels, mix skin tones and never buy the “wrong” tube again.</p>
+        <div class="card-meta"><span class="tag">All levels</span><span class="tag">4 weeks</span><span class="tag">Theory + lab</span></div>
+        <a class="card-link" href="#studio">Try the mixing lab
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="card reveal">
+        <span class="card-icon" style="background:var(--paint-terracotta)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+        </span>
+        <h3>Color by Numbers</h3>
+        <p>Zero pressure, guaranteed-gorgeous results. Follow the numbers, watch a painting appear, feel your shoulders drop.</p>
+        <div class="card-meta"><span class="tag">Relaxing</span><span class="tag">Self-paced</span></div>
+        <a class="card-link" href="#studio">Paint one now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="card reveal">
+        <span class="card-icon" style="background:var(--paint-sage)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-9-9c-1.2-2.8.5-6 3.5-6 2 0 3.5 1.2 4.5 3-.2-.1 1-3 4.5-3 3 0 4.7 3.2 3.5 6-2 4.5-9 9-9 9Z"/></svg>
+        </span>
+        <h3>Art Therapy &amp; Relaxation</h3>
+        <p>Guided mindful-making sessions designed with art therapists: slow drawing, expressive mark-making and breathing with the brush.</p>
+        <div class="card-meta"><span class="tag">All levels</span><span class="tag">Live + recorded</span></div>
+        <a class="card-link" href="#calm">Find your calm
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== CALM / ART THERAPY ======== -->
+<section class="section calm" id="calm">
+  <div class="container calm-grid">
+    <div>
+      <span class="kicker" style="color:var(--paint-sage)">Art relaxation &amp; therapy</span>
+      <h2 class="section-title">Art that lowers your heart rate</h2>
+      <p class="section-sub" style="margin-bottom:var(--space-lg)">Our relaxation track isn't about being “good at art”. It's about the quiet focus that happens when your hands are busy and your mind finally gets to rest.</p>
+      <ul>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <div><b>Guided mindful sessions</b> 20-minute audio-guided drawing and painting rituals for mornings and wind-downs.</div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <div><b>Designed with therapists</b> Exercises based on real art-therapy practice: emotion mapping, texture play, slow looking.</div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <div><b>No skill required</b> Color by numbers, doodle prompts and clay squeezing — results are optional, calm is guaranteed.</div>
+        </li>
+      </ul>
+    </div>
+    <div class="breath-wrap reveal">
+      <div class="breath" role="img" aria-label="Slowly pulsing circle to breathe along with">breathe in… and out</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== STUDIO: INTERACTIVE ======== -->
+<section class="section" id="studio">
+  <div class="container">
+    <span class="kicker">Try the studio</span>
+    <h2 class="section-title">Play before you enroll</h2>
+    <p class="section-sub">Two tiny tastes of our courses, right in your browser: mix real paint colors, then finish a mini color-by-numbers.</p>
+    <div class="studio-grid">
+
+      <!-- Color mixing lab -->
+      <div class="panel reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="10" r="5.5"/><circle cx="15" cy="14" r="5.5"/></svg>
+          Color mixing lab
+        </h3>
+        <div class="mix-row">
+          <div class="mix-col">
+            <span class="swatch" id="swatchA" aria-hidden="true"></span>
+            <label for="colorA" style="font-weight:700;font-size:.85rem">Paint A</label>
+            <select id="colorA"></select>
+          </div>
+          <span class="plus" aria-hidden="true">+</span>
+          <div class="mix-col">
+            <span class="swatch" id="swatchB" aria-hidden="true"></span>
+            <label for="colorB" style="font-weight:700;font-size:.85rem">Paint B</label>
+            <select id="colorB"></select>
+          </div>
+        </div>
+        <div>
+          <label for="ratio" style="font-weight:700;font-size:.85rem">Mixing ratio</label>
+          <input type="range" id="ratio" min="0" max="100" value="50" aria-describedby="mixRecipe">
+          <div class="range-labels"><span>More A</span><span>More B</span></div>
+        </div>
+        <div class="mix-result">
+          <span class="swatch-result" id="swatchMix" aria-hidden="true"></span>
+          <span class="mix-recipe" id="mixRecipe" aria-live="polite"></span>
+          <span class="mix-hex" id="mixHex"></span>
+        </div>
+      </div>
+
+      <!-- Color by numbers -->
+      <div class="panel reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+          Mini color by numbers
+        </h3>
+        <p style="color:var(--color-secondary);font-size:.95rem">Pick a color, then click the regions with its number. Finish the little sailboat scene.</p>
+        <div class="cbn-palette" role="group" aria-label="Paint palette">
+          <button class="cbn-color" data-cnum="1" style="background:#8EC5E8" aria-pressed="false" aria-label="Color 1, sky blue">1</button>
+          <button class="cbn-color" data-cnum="2" style="background:#E9B44C" aria-pressed="false" aria-label="Color 2, sun yellow">2</button>
+          <button class="cbn-color" data-cnum="3" style="background:#3D5A80" aria-pressed="false" aria-label="Color 3, sea blue">3</button>
+          <button class="cbn-color" data-cnum="4" style="background:#C65D3B" aria-pressed="false" aria-label="Color 4, hull terracotta">4</button>
+          <button class="cbn-color" data-cnum="5" style="background:#DB2777" aria-pressed="false" aria-label="Color 5, sail pink">5</button>
+        </div>
+        <svg class="cbn-svg" viewBox="0 0 360 240" role="img" aria-label="Color by numbers sailboat scene">
+          <!-- sky -->
+          <path data-num="1" fill="#F5F1EA" d="M2 2h356v148H2Z"/>
+          <!-- sun -->
+          <circle data-num="2" fill="#F5F1EA" cx="300" cy="52" r="30"/>
+          <!-- sea -->
+          <path data-num="3" fill="#F5F1EA" d="M2 150h356v88H2Z"/>
+          <!-- hull -->
+          <path data-num="4" fill="#F5F1EA" d="M110 168h140l-24 34H136Z"/>
+          <!-- sails -->
+          <path data-num="5" fill="#F5F1EA" d="M176 40v118h-66Z"/>
+          <path data-num="5" fill="#F5F1EA" d="M192 56v102h58Z"/>
+          <text x="170" y="24">1</text>
+          <text x="297" y="56">2</text>
+          <text x="40" y="222">3</text>
+          <text x="176" y="192">4</text>
+          <text x="152" y="140">5</text>
+          <text x="216" y="140">5</text>
+        </svg>
+        <p class="cbn-status" id="cbnStatus" aria-live="polite">Pick a color to begin.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== STEPS ======== -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <span class="kicker">How it works</span>
+    <h2 class="section-title">From “I can't draw” to framed on the wall</h2>
+    <div class="steps" style="margin-top:var(--space-lg)">
+      <div class="step reveal">
+        <span class="step-num" aria-hidden="true">1</span>
+        <h3>Choose a track</h3>
+        <p>Clay, acrylics, oils, color theory or pure relaxation — take our 1-minute quiz if you can't decide.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num" aria-hidden="true">2</span>
+        <h3>Learn in tiny steps</h3>
+        <p>Short video lessons with printable guides and a supplies list that won't empty your wallet.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num" aria-hidden="true">3</span>
+        <h3>Share &amp; grow</h3>
+        <p>Post your work to a kind community, get gentle feedback from teachers, and watch your gallery grow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TESTIMONIALS ======== -->
+<section class="section" id="stories" style="padding-top:0">
+  <div class="container">
+    <span class="kicker">Stories</span>
+    <h2 class="section-title">What our learners say</h2>
+    <div class="quotes" style="margin-top:var(--space-lg)">
+      <figure class="quote reveal">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg>
+        </div>
+        <blockquote><p>“I signed up for the art-therapy sessions during a stressful season at work. Twenty minutes of slow drawing and I sleep like a stone.”</p></blockquote>
+        <figcaption class="quote-who">
+          <span class="avatar" style="background:var(--paint-sage)" aria-hidden="true">LM</span>
+          <div><b>Lina M.</b><span>Relaxation track, 6 months</span></div>
+        </figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg>
+        </div>
+        <blockquote><p>“The color mixing course changed everything. I finally understand why my greens were always muddy. My acrylic landscapes glow now.”</p></blockquote>
+        <figcaption class="quote-who">
+          <span class="avatar" style="background:var(--paint-blue)" aria-hidden="true">KT</span>
+          <div><b>Karim T.</b><span>Acrylic + color theory</span></div>
+        </figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8L18.3 21 12 17.4 5.7 21l1.5-6.8L2 9.4l7-.8Z"/></svg>
+        </div>
+        <blockquote><p>“Started with color by numbers because I was scared of a blank canvas. Eight months later I'm throwing pots on a wheel. Wild.”</p></blockquote>
+        <figcaption class="quote-who">
+          <span class="avatar" style="background:var(--paint-terracotta)" aria-hidden="true">SJ</span>
+          <div><b>Sofia J.</b><span>Color by numbers → ceramics</span></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ======== CTA ======== -->
+<section class="section" id="join" style="padding-top:0">
+  <div class="container">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Your first course is on us</h2>
+        <p>Join free and get the Color Mixing starter course, one guided relaxation session, and a printable color-by-numbers pack.</p>
+      </div>
+      <a class="btn btn-primary" href="#" style="font-size:1.05rem;padding:1rem 2rem">Start free today</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer>
+  <div class="container footer-grid">
+    <a class="logo" href="#top" aria-label="Atelier home" style="font-size:1.1rem">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3C7 3 3 6.9 3 11.7c0 4.8 4 8.6 9 8.6.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.6 1.6-1.6h1.9c2.6 0 4.7-2.1 4.7-4.7C21 6.3 17 3 12 3Z" stroke="#18181B" stroke-width="1.7"/>
+        <circle cx="7.5" cy="10.5" r="1.3" fill="#DB2777"/><circle cx="11" cy="7.5" r="1.3" fill="#E9B44C"/>
+        <circle cx="15.5" cy="8.5" r="1.3" fill="#3D5A80"/><circle cx="8" cy="14.5" r="1.3" fill="#6B9080"/>
+      </svg>
+      Atelier
+    </a>
+    <ul class="footer-links">
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#calm">Art therapy</a></li>
+      <li><a href="#studio">Studio</a></li>
+      <li><a href="#stories">Stories</a></li>
+    </ul>
+    <span>© 2026 Atelier. Made with slow mornings and wet paint.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ----- mobile nav ----- */
+  var toggle = document.querySelector(".nav-toggle");
+  var menu = document.getElementById("nav-menu");
+  toggle.addEventListener("click", function () {
+    var open = menu.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+  menu.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") { menu.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); }
+  });
+
+  /* ----- scroll reveal (staggered) ----- */
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var revealEls = document.querySelectorAll(".reveal");
+  if (reduced || !("IntersectionObserver" in window)) {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      var delay = 0;
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        setTimeout(function () { el.classList.add("in"); }, delay);
+        delay += 60;
+        io.unobserve(el);
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ----- color mixing lab ----- */
+  var paints = [
+    { name: "Cadmium Yellow", hex: "#E9B44C" },
+    { name: "Ultramarine Blue", hex: "#3D5A80" },
+    { name: "Crimson Pink", hex: "#DB2777" },
+    { name: "Sage Green", hex: "#6B9080" },
+    { name: "Terracotta", hex: "#C65D3B" },
+    { name: "Titanium White", hex: "#F5F1EA" },
+    { name: "Charcoal Black", hex: "#2B2926" }
+  ];
+  var selA = document.getElementById("colorA");
+  var selB = document.getElementById("colorB");
+  paints.forEach(function (p, i) {
+    selA.add(new Option(p.name, i));
+    selB.add(new Option(p.name, i));
+  });
+  selA.value = 0; selB.value = 1;
+  var ratio = document.getElementById("ratio");
+  var swA = document.getElementById("swatchA"), swB = document.getElementById("swatchB"),
+      swM = document.getElementById("swatchMix"),
+      recipe = document.getElementById("mixRecipe"), hexOut = document.getElementById("mixHex");
+
+  function hexToRgb(h) {
+    return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+  }
+  /* gamma-aware blend: mixes like light-weight paint rather than harsh RGB averaging */
+  function mixHex(h1, h2, t) {
+    var a = hexToRgb(h1), b = hexToRgb(h2), out = [0, 0, 0];
+    for (var i = 0; i < 3; i++) {
+      out[i] = Math.round(Math.sqrt((1 - t) * a[i] * a[i] + t * b[i] * b[i]));
+    }
+    return "#" + out.map(function (v) { return v.toString(16).padStart(2, "0"); }).join("");
+  }
+  function updateMix() {
+    var pA = paints[selA.value], pB = paints[selB.value];
+    var t = ratio.value / 100;
+    var mixed = mixHex(pA.hex, pB.hex, t);
+    swA.style.background = pA.hex;
+    swB.style.background = pB.hex;
+    swM.style.background = mixed;
+    recipe.textContent = Math.round((1 - t) * 100) + "% " + pA.name + " + " + Math.round(t * 100) + "% " + pB.name;
+    hexOut.textContent = mixed.toUpperCase();
+  }
+  [selA, selB, ratio].forEach(function (el) { el.addEventListener("input", updateMix); });
+  updateMix();
+
+  /* ----- color by numbers ----- */
+  var cbnColors = { 1: "#8EC5E8", 2: "#E9B44C", 3: "#3D5A80", 4: "#C65D3B", 5: "#DB2777" };
+  var selected = null;
+  var status = document.getElementById("cbnStatus");
+  var palette = document.querySelectorAll(".cbn-color");
+  var regions = document.querySelectorAll(".cbn-svg [data-num]");
+  var filled = new Set();
+
+  palette.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      palette.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+      btn.setAttribute("aria-pressed", "true");
+      selected = btn.dataset.cnum;
+      status.textContent = "Now click every region numbered " + selected + ".";
+      status.style.color = "";
+    });
+  });
+  regions.forEach(function (region, idx) {
+    region.setAttribute("tabindex", "0");
+    region.setAttribute("role", "button");
+    region.setAttribute("aria-label", "Region number " + region.dataset.num);
+    function paint() {
+      if (!selected) { status.textContent = "Pick a color from the palette first."; return; }
+      if (region.dataset.num === selected) {
+        region.setAttribute("fill", cbnColors[selected]);
+        filled.add(idx);
+        if (filled.size === regions.length) {
+          status.textContent = "Beautiful! You finished the scene — imagine this feeling, but on a real canvas.";
+        } else {
+          status.textContent = (regions.length - filled.size) + " region" + (regions.length - filled.size > 1 ? "s" : "") + " left.";
+        }
+        status.style.color = "";
+      } else {
+        status.textContent = "That region is number " + region.dataset.num + " — try matching it to color " + region.dataset.num + ".";
+        status.style.color = "#C65D3B";
+      }
+    }
+    region.addEventListener("click", paint);
+    region.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); paint(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
