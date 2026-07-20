@@ -1,0 +1,24 @@
+name: filea
+description: "Filea — daily stretch, yoga & mobility routines. Move better every day."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.2.1
+  shared_preferences: ^2.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  # Final art from GEMINI_ASSET_PROMPTS.md goes here — see assets/README.md
+  assets:
+    - assets/images/
